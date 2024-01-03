@@ -1,0 +1,48 @@
+@font-face {
+  font-family: 'AurumIcons';
+  src:  url('fonts/AurumIcons.eot?lwankl');
+  src:  url('fonts/AurumIcons.eot?lwankl#iefix') format('embedded-opentype'),
+    url('fonts/AurumIcons.ttf?lwankl') format('truetype'),
+    url('fonts/AurumIcons.woff?lwankl') format('woff'),
+    url('fonts/AurumIcons.svg?lwankl#AurumIcons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="aurum-"], [class*=" aurum-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'AurumIcons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.aurum-star:before {
+  content: "\e900";
+}
+.aurum-add-plus:before {
+  content: "\e901";
+}
+.aurum-forward:before {
+  content: "\e902";
+}
+.aurum-list-add:before {
+  content: "\e903";
+}
+.aurum-arrow-left-mini:before {
+  content: "\e906";
+}
+.aurum-arrow-right-mini:before {
+  content: "\e904";
+}
+.aurum-minus:before {
+  content: "\e905";
+}
