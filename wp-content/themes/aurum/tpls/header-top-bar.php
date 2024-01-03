@@ -1,97 +1,53 @@
 <?php
-/**
- *	Aurum WordPress Theme
- *
- *	Laborator.co
- *	www.laborator.co
- */
 
-if ( ! get_data( 'header_top_links' ) ) {
-	return;
-} 
+function timestamp_to_date_italian($month_number)
+    {       
+        $months_italian = array(
+                '01' => 'Gennaio', 
+                '02' => 'Febbraio', 
+                '03' => 'Marzo', 
+                '04' => 'Aprile',
+                '05' => 'Maggio', 
+                '06' => 'Giugno', 
+                '07' => 'Luglio', 
+                '08' => 'Agosto',
+                '09' => 'Settembre', 
+                '10' => 'Ottobre', 
+                '11' => 'Novembre',
+                '12' => 'Dicembre');
 
-$header_top_style       = get_data( 'header_top_style' );
-$header_top_links_left  = get_data( 'header_top_links_left' );
-$header_top_links_right = get_data( 'header_top_links_right' );
+              
+        return $months_italian[$month_number];
 
-$header_top_left_text   = get_data( 'header_top_left_text' );
-$header_top_right_text  = get_data( 'header_top_right_text' );
+    }
 
-// Left column
-$left_column = $header_top_links_left || $header_top_left_text;
-
-// Right column
-$right_column = $header_top_links_right || $header_top_right_text;
-
-// Classes
-$classes = array( 'top-menu' );
-
-// Top menu skin
-if ( in_array( $header_top_style, array( 'gray', 'light' ) ) ) {
-	$classes[] = "top-menu--{$header_top_style}";
-} else {
-	$classes[] = 'top-menu--dark';
-}
-
-// Columns
-if ( $left_column && $right_column ) {
-	$classes[] = 'top-menu--columns-2';
-}
-
+/* function timestamp_to_day_name_italia($name_day_today){
+    $name_day_italian = array(
+        'Mon' => 'Lunedì',
+        'Tue' => 'Martedì',
+        'Wed' => 'Mercoledì', 
+        'Thu' => 'Giovedì',
+        'Fri' => 'Venerdì',
+        'Sat' => 'Sabato',
+        'Sun' => 'Domenica'
+    );
+    return $name_day_italian[$name_day_today];
+} */
+    $day_today = date('d');
+    $months_today = timestamp_to_date_italian(date("m"));
+    $years_today = date('Y');
+    /* $name_day_today = date("D");
+    $name_today_for_opening_hours = timestamp_to_day_name_italia($name_day_today); */
 ?>
-<div <?php aurum_class_attr( $classes ); ?>>
-	
-	<div class="container">
-		
-		<div class="row">
-		
-			<?php if ( $left_column ) : ?>
-			<div class="col">
-				
-				<?php
-					
-					/**
-					 * Show top menu text
-					 */
-					if ( ! empty( $header_top_left_text ) ) {
-						aurum_show_top_menu_widget( $header_top_left_text, true );
-					}
-					
-					/**
-					 * Show top menu widget
-					 */
-					if ( 'hide' !== $header_top_links_left ) {
-						aurum_show_top_menu_widget( $header_top_links_left );
-					}
-				?>
-				
-			</div>
-			<?php endif; ?>
-			
-			<?php if ( $right_column ) : ?>
-			<div class="col right">
-				
-				<?php
-					/**
-					 * Show top menu widget
-					 */
-					if ( 'hide' !== $header_top_right_text ) {
-						aurum_show_top_menu_widget( $header_top_links_right );
-					}
-					
-					/**
-					 * Show top menu text
-					 */
-					if ( ! empty( $header_top_right_text ) ) {
-						aurum_show_top_menu_widget( $header_top_right_text, true );
-					}
-				?>
-				
-			</div>
-			<?php endif; ?>
-			
-		</div>
-		
-	</div>
-	
+<div class="site-header_top-bar">
+    <div class="container">
+        <div class="row">
+            <div class="text-centered">
+            Oggi <span class="day"><?php echo $day_today; ?></span> <span class="month"><?php echo $months_today; ?></span> <span class="year"><?php echo $years_today; ?></span> siamo aperti 9.30 - 19.30
+
+            </div>
+            <?php @include('social-network.php');?>
+        </div>
+    </div>
 </div>
+<!-- /.site-header_top-bar -->
